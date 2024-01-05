@@ -1,0 +1,6 @@
+CD22 testCaseLexicalError!
+main
+i:int#
+beg##in
+printline "Hello@ World";
+end CD22 testCaseLexicalError!

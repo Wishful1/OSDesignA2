@@ -1,0 +1,97 @@
+CD22 testCaseCartesianPoints
+constants
+sizePoints = 20, sizeDistances = 190
+types
+    point def
+        x : int,
+        y : int,
+        z : int  
+    end
+    distance def
+        length : float,
+        point1 : int,
+        point2 : int
+    end
+    pointArray def array [size] of point end
+    distanceArray def array [sizeDistances] of distance end
+arrays
+points : pointArray,
+distances : distanceArray
+
+/-- does this return points or pointArray?
+func inputPoints() : int
+    tmpx : int,
+    tmpy : int,
+    tmpz : int,
+    i : int,
+    finish : bool,
+    check : int
+    begin
+        for (i = 0; finish != true)
+            /-- not sure if I can use operaters inside printline statements here, i'm gonna roll with it
+            /-- also not exactly sure how the input command works here, you could also prompt for each value of a point 
+            printline "Enter Point #", i + 1, ":";
+            input tmpx, tmpy, tmpz;
+            points[i].x = tmpx;
+            points[i].y = tmpy;
+            points[i].z = tmpz;
+            if (i == 49)
+                printline "Max Points Reached!";
+                finish = true;
+            end
+            printline "More Points? YES:1 NO:0";
+            input check;
+            if (check == 0)
+                /-- TODO: check for one point
+                finish = true;
+            end
+        end
+    i = i + 1;
+    return i;
+    end 
+
+func calcDistances(numOfPoints : int) : int
+    tmpdistance : float,
+    i : int,
+    j : int,
+    k : int
+    begin
+    k = 0;
+    for (i = 0; i < numOfPoints - 1)
+        for (j = 1; i < numOfPoints)
+            tmpdistance = tmpdistance + points[j].x - points[i].x^2;
+            tmpdistance = tmpdistance + points[j].y - points[i].x^2;
+            tmpdistance = tmpdistance + points[j].z - points[i].x^2;
+            tmpdistance = tmpdistance^0.5;
+            distances[k].length = tmpdistance;
+            distances[k].point1 = i;
+            distances[k].point2 = j;
+            k = k + 1;
+        end
+    end
+    return k;
+    end
+
+func biggestDistance(numOfDistances : int) : void
+    biggest : float,
+    i : int,
+    p1 : int,
+    p2 : int
+    begin
+    biggest = 0;
+    for (i = 1; i < numOfDistances)
+        if(distances[i].length > distances[biggest].length) biggest = i; end
+    end
+    p1 = distances[biggest].part1;
+    p2 = distances[biggest].part2;
+    printline "The longest distance in the group is ", distances[biggest].length, " between the points (", points[p1].x, ", ", points[p1].y, ", ", points[p1].z, ") and (", points[p2].x, ", ", points[p2].y, ", ", points[p2].z, ")";
+    end
+
+main
+pointsSize : int,
+distancesSize : int
+begin
+pointsSize = inputPoints();
+distanceSize = calcDistances(pointsSize);
+biggestDistance(distanceSize);
+end CD22 testCaseArrays

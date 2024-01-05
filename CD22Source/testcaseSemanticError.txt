@@ -1,0 +1,8 @@
+CD22 testCaseSemanticError
+main
+i:int
+begin
+i = 1;
+j = i;
+printline j;
+end CD22 wrongID

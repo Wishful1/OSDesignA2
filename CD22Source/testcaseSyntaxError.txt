@@ -1,0 +1,4 @@
+CD22 testCaseSyntaxError
+begin
+printline "Hello World"
+end CD22 testCaseSyntaxError

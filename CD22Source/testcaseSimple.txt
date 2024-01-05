@@ -1,0 +1,6 @@
+CD22 testCaseSimple
+main
+i:int
+begin
+end CD22 testCaseSimple
+

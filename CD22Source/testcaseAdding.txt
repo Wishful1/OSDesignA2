@@ -1,0 +1,9 @@
+CD22 testCaseAdding
+main
+x:int, y:int, z:int
+begin
+x = 5;
+y = 6;
+z = x + y;
+printline z;
+end CD22 testCaseAdding

@@ -1,0 +1,22 @@
+CD22 testCaseArrays
+constants
+size = 5
+types
+    count def
+        value : int  
+    end
+    countArray def array [size] of count end
+arrays
+counting : countArray
+main
+x:int, y:int
+begin
+/-- not sure if you can reference constants here (hey this doubles as a comment check)
+for (i = 0, x = 0; i < size)
+    x = x + 1;
+    counting[i].value = x;
+    i = i + 1;
+end
+end CD22 testCaseArrays
+
+    
